@@ -1,10 +1,27 @@
 <?php
-// includes/db.php
+/**
+ * Database Configuration and Connection Module
+ * 
+ * This module handles all database connectivity for the MediCore HMS system.
+ * It uses PDO for secure database operations with prepared statements.
+ */
+
+// Database connection credentials
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'medicore_hms');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
+/**
+ * Get a singleton PDO database connection
+ * 
+ * Returns the same database connection instance across multiple calls.
+ * Initializes connection on first call with proper error handling and
+ * configuration for UTF-8, exception handling, and associative array fetching.
+ * 
+ * @return PDO The singleton database connection instance
+ * @throws PDOException If database connection fails (displays error page)
+ */
 function getDB(): PDO {
     static $pdo = null;
     if ($pdo === null) {

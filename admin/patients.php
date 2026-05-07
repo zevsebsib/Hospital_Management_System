@@ -1,4 +1,25 @@
 <?php
+/**
+ * MediCore HMS — Patient Management Page (Admin Only)
+ * 
+ * Allows administrators to:
+ * - View all patients with searchable directory
+ * - Register new patient records with demographics
+ * - Delete patient accounts and associated medical records
+ * - View patient medical history and consultation records
+ * 
+ * Features:
+ * - Live search filtering by patient name
+ * - Patient demographics capture (DOB, sex, address, contact)
+ * - Soft delete tracking (if implemented)
+ * 
+ * Requires: Administrator role (enforced by requireAdmin())
+ * 
+ * POST Actions:
+ * - 'add': Register new patient
+ * - 'delete': Remove patient record
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

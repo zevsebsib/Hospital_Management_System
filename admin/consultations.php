@@ -1,4 +1,28 @@
 <?php
+/**
+ * MediCore HMS — Consultation Records Page (Admin & Doctor)
+ * 
+ * Allows authorized users to:
+ * - View consultation history (admin: all, doctor: own)
+ * - Record new consultations after appointments
+ * - Document diagnosis and clinical notes
+ * - Link prescriptions to consultations
+ * - Maintain clinical records for patient history
+ * 
+ * Features:
+ * - Role-aware data filtering (doctor sees only their consultations)
+ * - Appointment-based consultation creation
+ * - Diagnostic tracking
+ * - Clinical notes documentation
+ * 
+ * Requires: Login (admin sees all, doctor sees own)
+ * 
+ * POST Actions:
+ * - 'add': Record new consultation
+ * - 'edit': Update consultation notes
+ * - 'delete': Remove consultation record
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

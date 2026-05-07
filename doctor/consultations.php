@@ -1,4 +1,29 @@
 <?php
+/**
+ * MediCore HMS — Doctor Consultations Page (Doctor Only)
+ * 
+ * Allows doctors to:
+ * - View all their scheduled appointments
+ * - Record consultation notes for completed appointments
+ * - Document patient diagnosis
+ * - Add clinical observations and treatment notes
+ * - Link consultations to prescriptions
+ * 
+ * Features:
+ * - Appointment-to-consultation workflow
+ * - Doctor-specific filtering (only their consultations)
+ * - Diagnosis recording
+ * - Clinical notes documentation
+ * - Timestamp tracking
+ * 
+ * Requires: Doctor role (enforced by requireLogin + role check)
+ * 
+ * POST Actions:
+ * - 'add': Record new consultation
+ * - 'edit': Update consultation notes
+ * - 'delete': Remove consultation record
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

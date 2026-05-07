@@ -1,4 +1,29 @@
 <?php
+/**
+ * MediCore HMS — Prescription Management Page (Admin & Doctor)
+ * 
+ * Allows authorized users to:
+ * - View all prescriptions (admin: all, doctor: their own)
+ * - Issue new prescriptions for consultations
+ * - Document medication details (name, dosage, frequency)
+ * - Provide patient instructions
+ * - Track prescription history
+ * 
+ * Features:
+ * - Consultation-linked prescription creation
+ * - Medication documentation
+ * - Dosage and frequency specification
+ * - Patient instruction notes
+ * - Role-aware data filtering
+ * 
+ * Requires: Login (admin sees all, doctor sees own)
+ * 
+ * POST Actions:
+ * - 'add': Issue new prescription
+ * - 'edit': Update prescription details
+ * - 'delete': Remove prescription record
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

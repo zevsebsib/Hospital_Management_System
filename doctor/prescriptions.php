@@ -1,4 +1,30 @@
 <?php
+/**
+ * MediCore HMS — Doctor Prescriptions Page (Doctor Only)
+ * 
+ * Allows doctors to:
+ * - View all prescriptions they have issued
+ * - Issue new prescriptions for their consultations
+ * - Specify medication details and dosage
+ * - Provide patient-specific instructions
+ * - Track prescription history for audit trail
+ * 
+ * Features:
+ * - Doctor-specific prescription filtering
+ * - Consultation linkage
+ * - Medication documentation
+ * - Dosage and frequency specification
+ * - Patient instructions
+ * - Optional consultation pre-selection (?consult_id=)
+ * 
+ * Requires: Doctor role (enforced by requireLogin + role check)
+ * 
+ * POST Actions:
+ * - 'add': Issue new prescription
+ * - 'edit': Update prescription details
+ * - 'delete': Remove prescription record
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

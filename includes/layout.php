@@ -1,5 +1,27 @@
 <?php
-// includes/layout.php
+/**
+ * Layout Template Functions
+ * 
+ * Provides the main HTML layout framework with sidebar navigation,
+ * top bar, and flash message display for authenticated pages.
+ */
+
+/**
+ * Render the Main Layout Template
+ * 
+ * Outputs the complete HTML layout structure including:
+ * - Sidebar with navigation menu (role-aware)
+ * - Top bar with page title and user info
+ * - Flash message toast notification
+ * - Integration with Bootstrap and custom CSS
+ * 
+ * Must be paired with renderLayoutEnd() to close tags.
+ * 
+ * @param string $active The currently active navigation item key (e.g., 'dashboard', 'doctors')
+ * @param string $title The page title to display
+ * @param string $sub Optional subtitle (default: auto-generated from $active)
+ * @return void Outputs HTML directly
+ */
 function renderLayout(string $active, string $title, string $sub = ''): void {
     $u = currentUser();
     $flash = getFlash();
@@ -119,6 +141,14 @@ function renderLayout(string $active, string $title, string $sub = ''): void {
 <?php
 }
 
+/**
+ * Close the Main Layout Template
+ * 
+ * Closes all HTML tags opened by renderLayout().
+ * Must be called at the end of every authenticated page after page content.
+ * 
+ * @return void Outputs closing HTML tags
+ */
 function renderLayoutEnd(): void {
 ?>
     </div><!-- .content -->

@@ -1,7 +1,26 @@
 <?php
+/**
+ * MediCore HMS — Authentication Page (Login & Registration)
+ * 
+ * This is the public entry point for user authentication. Features:
+ * - Doctor registration with email validation and duplicate checking
+ * - Secure login with password hashing verification
+ * - Account status validation (pending vs active)
+ * - Automatic session generation with user context
+ * - Role-specific session data (includes doctor_id for doctors)
+ * - Transaction rollback on registration errors
+ * 
+ * POST Actions:
+ * - 'register_doctor': Creates new doctor account pending admin approval
+ * - 'login': Authenticates user and starts session
+ * 
+ * GET: Displays authentication UI (login form / registration modal)
+ */
+
 require_once __DIR__ . '/includes/db.php';
 session_start();
 
+// Redirect already-authenticated users to dashboard
 if (isset($_SESSION['user_id'])) { header('Location: /hms/dashboard.php'); exit; }
 
 $error = '';
@@ -9,6 +28,13 @@ $success = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? 'login';
     
+    /**
+     * Doctor Registration Handler
+     * 
+     * Validates input, checks for duplicate emails, creates user account
+     * with hashed password, then creates associated doctor profile.
+     * Requires admin approval before login is allowed.
+     */
     if ($action === 'register_doctor') {
         $fname = trim($_POST['firstname'] ?? '');
         $lname = trim($_POST['lastname'] ?? '');
@@ -40,6 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     } else {
+        /**
+         * User Login Handler
+         * 
+         * Authenticates with email and password. On success:
+         * - Regenerates session ID for security
+         * - Stores user context (id, name, initials, role)
+         * - For doctors: Retrieves and stores doctor_id for clinical operations
+         * 
+         * Fails if account status is 'pending' (awaiting admin approval)
+         */
         $email = trim($_POST['email'] ?? '');
         $pass  = trim($_POST['password'] ?? '');
         $s = getDB()->prepare("SELECT * FROM users WHERE email=? LIMIT 1");

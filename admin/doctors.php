@@ -1,4 +1,21 @@
 <?php
+/**
+ * MediCore HMS — Doctor Management Page (Admin Only)
+ * 
+ * Allows administrators to:
+ * - View all doctors with their specializations and schedules
+ * - Add new doctor accounts (automatically activated)
+ * - Edit doctor information (specialization, schedule)
+ * - Delete doctor accounts and associated data
+ * 
+ * Requires: Administrator role (enforced by requireAdmin())
+ * 
+ * POST Actions:
+ * - 'add': Create new doctor account
+ * - 'edit': Update doctor information
+ * - 'delete': Remove doctor account
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

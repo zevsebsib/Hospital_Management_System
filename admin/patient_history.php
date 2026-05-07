@@ -1,4 +1,25 @@
 <?php
+/**
+ * MediCore HMS — Patient Medical History Page
+ * 
+ * Displays comprehensive medical records for a specific patient:
+ * - Complete consultation history (newest first)
+ * - Associated prescriptions for each consultation
+ * - Doctor information for each visit
+ * - Diagnosis and clinical notes
+ * - Treatment timeline
+ * 
+ * Features:
+ * - Full medical record view
+ * - Nested prescription display
+ * - Doctor attribution tracking
+ * - Chronological history organization
+ * - Back navigation to patient list
+ * 
+ * Access: Accessible to admins (via patient lookup)
+ * URL Parameter: ?id=<patient_id>
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

@@ -1,4 +1,19 @@
 <?php
+/**
+ * MediCore HMS — Logout Handler
+ * 
+ * Securely terminates user session and redirects to login page.
+ * 
+ * Security measures:
+ * - Clears all session variables
+ * - Invalidates session cookie with proper parameters
+ * - Destroys session ID on server side
+ * - Regenerates session ID to prevent fixation attacks
+ * - Redirects to login page (index.php)
+ * 
+ * No output - this is a redirect handler only.
+ */
+
 session_start();
 
 // Clear all session variables first

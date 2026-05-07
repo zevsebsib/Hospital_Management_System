@@ -1,4 +1,28 @@
 <?php
+/**
+ * MediCore HMS — Appointment Scheduling Page (Admin Only)
+ * 
+ * Allows administrators to:
+ * - View all scheduled appointments with doctor/patient details
+ * - Create new appointments with automatic conflict detection
+ * - Prevent double-booking (doctor can't have overlapping appointments)
+ * - Update appointment status (Scheduled → Completed)
+ * - Cancel appointments if needed
+ * 
+ * Features:
+ * - Real-time conflict checking
+ * - Date/time validation
+ * - Doctor availability verification
+ * - Patient-Doctor matching
+ * 
+ * Requires: Administrator role (enforced by requireAdmin())
+ * 
+ * POST Actions:
+ * - 'add': Schedule new appointment
+ * - 'update': Change appointment status
+ * - 'delete': Cancel appointment
+ */
+
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';

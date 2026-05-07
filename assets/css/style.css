@@ -1,5 +1,29 @@
+/**
+ * MediCore HMS v2 — Main Stylesheet
+ * 
+ * Professional healthcare management system styling with:
+ * - Medical-grade color palette (teal accents, deep slate grays)
+ * - Responsive two-column auth layout
+ * - Fixed sidebar navigation with role-aware menu
+ * - Data table styling with hover effects
+ * - Modal and form components
+ * - Badge and button variants
+ * 
+ * CSS Variables:
+ * - Color tokens: --ink, --accent, --blue, --green, --red, --amber, --teal
+ * - Layout: --sidebar-w (256px), --header-h (60px)
+ * - Typography: --font-display (serif), --font-body (sans-serif)
+ * - Shadows: --shadow-xs to --shadow-lg for depth hierarchy
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
+/**
+ * CSS VARIABLES / DESIGN TOKENS
+ * 
+ * All colors, spacing, typography, and effects are centralized here.
+ * Update these variables to instantly rebrand the entire application.
+ */
 :root {
   /* Core Palette — deep slate medical */
   --ink:        #0d1117;
@@ -61,12 +85,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/**
+ * ─── AUTHENTICATION PAGES ────────────────────────────────────────────────────
+ * 
+ * Two-column layout for login/registration:
+ * - Left: Branding, hero content, stats (dark theme)
+ * - Right: Form inputs and authentication controls (light theme)
+ */
+
 /* ─── AUTH ─────────────────────────────────────────────────────────────── */
 .auth-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
 }
+
+/**
+ * Left Panel: Brand & Hero Section
+ * Features layered gradients and subtle grid texture for visual depth.
+ */
 
 /* Left Panel */
 .auth-left {
@@ -394,7 +431,26 @@ body {
 .btn-auth:active { transform: none; }
 
 /* ─── SHELL / LAYOUT ────────────────────────────────────────────────────── */
+
+/**
+ * Main Application Shell
+ * Flex container creating the two-column layout:
+ * - Left: Fixed sidebar (256px)
+ * - Right: Main content area with sticky header and scrollable content
+ */
+
 .shell { display: flex; min-height: 100vh; }
+
+/**
+ * ─── SIDEBAR ───────────────────────────────────────────────────────────
+ * 
+ * Fixed left navigation panel containing:
+ * - Logo/brand section
+ * - Role-aware navigation menu with badges
+ * - User profile footer with logout button
+ * 
+ * Responsive: Collapsible on mobile (handled via media queries elsewhere)
+ */
 
 /* ─── SIDEBAR ───────────────────────────────────────────────────────────── */
 .sidebar {
@@ -523,7 +579,21 @@ body {
 .sb-logout:hover { color: #fca5a5; }
 
 /* ─── MAIN ──────────────────────────────────────────────────────────────── */
+
+/**
+ * Main Content Area
+ * Contains sticky header bar and scrollable page content.
+ */
+
 .main { margin-left: var(--sidebar-w); flex: 1; }
+
+/**
+ * Top Navigation Bar (Sticky)
+ * Persists at top of content showing:
+ * - Page title and subtitle
+ * - User role badge
+ * - Current date/time
+ */
 
 .topbar {
   height: var(--header-h);
@@ -652,6 +722,16 @@ body {
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
 /* ─── TABLE ─────────────────────────────────────────────────────────────── */
+
+/**
+ * Data Table Styles
+ * Professional table styling with:
+ * - Alternating row highlighting on hover
+ * - Status badges in cells
+ * - Responsive horizontal scrolling
+ * - Striped header with uppercase labels
+ */
+
 .tbl-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 thead tr { border-bottom: 1px solid var(--border); }
@@ -677,6 +757,17 @@ tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover td { background: var(--surface); }
 
 /* ─── BADGES ────────────────────────────────────────────────────────────── */
+
+/**
+ * Status Badges
+ * Semantic status indicators with color-coded backgrounds:
+ * - Scheduled (blue)
+ * - Completed (green)
+ * - Cancelled (red)
+ * 
+ * Used in tables and info displays for appointment/consultation status.
+ */
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -695,6 +786,17 @@ tbody tr:hover td { background: var(--surface); }
 .badge-Cancelled::before, .badge-cancelled::before { background: var(--red); }
 
 /* ─── BUTTONS ───────────────────────────────────────────────────────────── */
+
+/**
+ * Button Components
+ * Multiple button variants for different actions:
+ * - Primary: Main action button (blue)
+ * - Success: Confirm/safe actions (teal)
+ * - Danger: Destructive actions (red outline)
+ * - Ghost: Secondary actions (white outline)
+ * - Small: Compact button variant
+ */
+
 .btn {
   display: inline-flex;
   align-items: center;

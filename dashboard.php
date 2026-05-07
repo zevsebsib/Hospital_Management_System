@@ -1,4 +1,19 @@
 <?php
+/**
+ * MediCore HMS — Main Dashboard Page
+ * 
+ * Displays the home view for both admins and doctors with:
+ * - Dashboard statistics cards (patients, doctors, appointments, prescriptions)
+ * - Upcoming scheduled appointments list
+ * - Recent prescriptions view
+ * 
+ * Role-specific behavior:
+ * - Admin: Sees system-wide statistics
+ * - Doctor: Sees only their appointments and prescriptions
+ * 
+ * Requires: User must be logged in (enforced by requireLogin())
+ */
+
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/functions.php';
